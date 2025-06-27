@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎵 IndieBeats - Audio Only</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🎧 IndieBeats</h1>
+    <input type="text" id="searchInput" placeholder="Search Indian Songs..." />
+    <button onclick="searchSongs()">Search</button>
+  </header>
+
+  <main>
+    <ul id="results"></ul>
+  </main>
+
+  <footer>
+    <div id="nowPlaying">No track playing</div>
+    <audio id="audioPlayer" controls></audio>
+    <div class="controls">
+      <button onclick="prevSong()">⏮️</button>
+      <button onclick="togglePlay()">⏯️</button>
+      <button onclick="nextSong()">⏭️</button>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
