@@ -39,7 +39,7 @@ function playTrack(index) {
   const title = track.snippet.title;
 
   // NOTE: Replace this with your own backend API for audio-only stream
-  const audioURL = `https://yt1s.ltd/audio?video=${videoId}`;
+ const audioURL = `https://indiebeats-audio-backend.onrender.com/audio?videoId=${videoId}`;
 
   audioPlayer.src = audioURL;
   audioPlayer.play();
