@@ -2,27 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎵 IndieBeats - Audio Only</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IndieBeats - Spotify Style</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
+  <header class="app-header">
     <h1>🎧 IndieBeats</h1>
-    <input type="text" id="searchInput" placeholder="Search Indian Songs..." />
-    <button onclick="searchSongs()">Search</button>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search Indian Songs..." />
+      <button onclick="searchSongs()">🔍</button>
+    </div>
   </header>
 
-  <main>
-    <ul id="results"></ul>
+  <main class="results-container">
+    <ul id="results" class="track-list"></ul>
   </main>
 
-  <footer>
-    <div id="nowPlaying">No track playing</div>
+  <footer class="player-bar">
+    <div id="nowPlaying">Now Playing: Nothing</div>
     <audio id="audioPlayer" controls></audio>
     <div class="controls">
       <button onclick="prevSong()">⏮️</button>
-      <button onclick="togglePlay()">⏯️</button>
+      <button onclick="togglePlay()" id="playPauseBtn">▶️</button>
       <button onclick="nextSong()">⏭️</button>
     </div>
   </footer>
@@ -30,4 +32,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
