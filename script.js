@@ -1,7 +1,10 @@
 const apiKey = "AIzaSyA7lC4ZbcFprbJja2AUnRbW6QrkGfsR_g4";
-let tracks = [], currentIndex = -1;
-const player = document.getElementById("audioPlayer");
+let tracks = [];
+let currentIndex = -1;
+
+const audioPlayer = document.getElementById("audioPlayer");
 const nowPlaying = document.getElementById("nowPlaying");
+const playPauseBtn = document.getElementById("playPauseBtn");
 
 function searchSongs() {
   const query = document.getElementById("searchInput").value.trim();
@@ -11,40 +14,48 @@ function searchSongs() {
     .then(res => res.json())
     .then(data => {
       tracks = data.items;
-      displayResults(tracks);
+      currentIndex = -1;
+      displayResults();
     });
 }
 
-function displayResults(items) {
+function displayResults() {
   const results = document.getElementById("results");
   results.innerHTML = "";
 
-  items.forEach((item, index) => {
+  tracks.forEach((track, index) => {
     const li = document.createElement("li");
     li.innerHTML = `
-      <span>${item.snippet.title}</span>
-      <button onclick="playTrack(${index})">▶️ Play</button>
+      <span>${track.snippet.title}</span>
+      <button onclick="playTrack(${index})">Play</button>
     `;
     results.appendChild(li);
   });
 }
 
 function playTrack(index) {
-  const videoId = tracks[index].id.videoId;
-  const title = tracks[index].snippet.title;
+  const track = tracks[index];
+  const videoId = track.id.videoId;
+  const title = track.snippet.title;
+
+  // NOTE: Replace this with your own backend API for audio-only stream
+  const audioURL = `https://yt1s.ltd/audio?video=${videoId}`;
+
+  audioPlayer.src = audioURL;
+  audioPlayer.play();
 
   nowPlaying.textContent = `Now Playing: ${title}`;
-  player.src = `https://yt1s.ltd/audio?video=${videoId}`; // Replace later with backend
-  player.play();
-
   currentIndex = index;
+  playPauseBtn.textContent = "⏸️";
 }
 
 function togglePlay() {
-  if (player.paused) {
-    player.play();
+  if (audioPlayer.paused) {
+    audioPlayer.play();
+    playPauseBtn.textContent = "⏸️";
   } else {
-    player.pause();
+    audioPlayer.pause();
+    playPauseBtn.textContent = "▶️";
   }
 }
 
