@@ -59,4 +59,3 @@ function nextSong() {
     playTrack(currentIndex + 1);
   }
 }
-
